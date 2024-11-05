@@ -39,7 +39,7 @@ namespace POSAndOrderSystem.EntityMigrations
 			.HasDefaultValueSql("GETDATE()");
 
 			// IsDeleted
-			builder.Property(u => u.IsDeleted)
+			builder.Property(u => u.IsActive)
 		   .IsRequired()
 		   .HasDefaultValue();
 		}

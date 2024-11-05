@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using POSAndOrderSystem.DbContexts;
 using POSAndOrderSystem.DTOs.Request;
 using POSAndOrderSystem.Entities;
@@ -30,9 +27,10 @@ namespace POSAndOrderSystem.Implementations
 				FirstName = userDto.FirstName,
 				LastName = userDto.LastName,
 				Email = userDto.Email,
+				Address = userDto.Address,
 				Password = userDto.Password,
 				Phone = userDto.Phone,
-				Role = "Admin",
+				RoleId = 1,
 				CreationDate = DateTime.UtcNow
 			};
 
@@ -69,7 +67,7 @@ namespace POSAndOrderSystem.Implementations
 		public async Task<bool> UpdateUser(UserDTO userDto)
 		{
 			var user = await _context.Users
-				.Where(u => u.ID == userDto.ID && !u.IsDeleted)
+				.Where(u => u.ID == userDto.ID && !u.IsActive)
 				.FirstOrDefaultAsync();
 
 			if (user == null)
@@ -79,7 +77,7 @@ namespace POSAndOrderSystem.Implementations
 			user.LastName = userDto.LastName;
 			user.Email = userDto.Email;
 			user.Phone = userDto.Phone;
-			user.Password = userDto.Password; 
+			user.Password = userDto.Password;
 
 			_context.Users.Update(user);
 			await _context.SaveChangesAsync();
@@ -89,13 +87,13 @@ namespace POSAndOrderSystem.Implementations
 		public async Task<bool> DeleteUser(int userId)
 		{
 			var user = await _context.Users
-				.Where(u => u.ID == userId && !u.IsDeleted)
+				.Where(u => u.ID == userId && !u.IsActive)
 				.FirstOrDefaultAsync();
 
 			if (user == null)
 				return false;
 
-			user.IsDeleted = true; 
+			user.IsActive = true;
 			_context.Users.Update(user);
 			await _context.SaveChangesAsync();
 			return true;
@@ -104,7 +102,7 @@ namespace POSAndOrderSystem.Implementations
 		public async Task<UserDTO> GetUserById(int userId)
 		{
 			var user = await _context.Users
-				.Where(u => u.ID == userId && !u.IsDeleted)
+				.Where(u => u.ID == userId && !u.IsActive)
 				.FirstOrDefaultAsync();
 
 			if (user == null)
@@ -123,7 +121,7 @@ namespace POSAndOrderSystem.Implementations
 		public async Task<IEnumerable<UserDTO>> GetAllUsers()
 		{
 			var users = await _context.Users
-				.Where(u => !u.IsDeleted) // Return only active users
+				.Where(u => !u.IsActive) // Return only active users
 				.ToListAsync();
 			return users.Select(u => new UserDTO
 			{
