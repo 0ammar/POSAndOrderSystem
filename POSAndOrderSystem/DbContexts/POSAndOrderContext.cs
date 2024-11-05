@@ -110,6 +110,7 @@ namespace POSAndOrderSystem.DbContexts
 			modelBuilder.ApplyConfiguration(new MenuTypeConfiguration());
 			modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
 			base.OnModelCreating(modelBuilder);
+			modelBuilder.ApplyConfiguration(new UserEntityConfigration());
 		}
 	}
 }

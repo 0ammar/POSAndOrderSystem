@@ -1,4 +1,6 @@
-﻿namespace POSAndOrderSystem.Entities
+﻿using Microsoft.EntityFrameworkCore.Update;
+
+namespace POSAndOrderSystem.Entities
 {
 	public class MainEntity
 	{

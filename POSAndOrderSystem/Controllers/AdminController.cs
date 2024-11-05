@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using POSAndOrderSystem.DTOs.LookupsDTO.Request;
 using POSAndOrderSystem.DTOs.MenusDTO.Request;
 using POSAndOrderSystem.DTOs.User.Request;
@@ -16,7 +17,7 @@ namespace POSAndOrderSystem.Controllers
 		private readonly IUserServices _adminServices;
 		private readonly ILookupServices _lookupServices;
 		private readonly IMenuServices _menuServices;
-
+	
 		public AdminController(IUserServices adminServices, ILookupServices lookupServices, IMenuServices menuServices)
 		{
 			_adminServices = adminServices;
@@ -109,7 +110,7 @@ namespace POSAndOrderSystem.Controllers
 				if (!await TokenHelper.ValidateToken(token, "Admin"))
 				{
 					return Unauthorized("You Are Not Autharized For Get Department");
-				}
+		}
 				var lookupItem = await _lookupServices.GetLookupItemById(id);
 				Log.Information($"LookupItem retrieved successfully for ID: {id}");
 				return Ok(lookupItem);
@@ -156,7 +157,7 @@ namespace POSAndOrderSystem.Controllers
 				return Ok(menuType);
 			}
 			catch (Exception ex)
-			{
+		{
 				Log.Error($"Unexpected error: {ex.Message}");
 				return StatusCode(500, "An unexpected error occurred.");
 			}
@@ -416,7 +417,7 @@ namespace POSAndOrderSystem.Controllers
 				{
 					Log.Error("Failed to create MenuType due to database error.");
 					return StatusCode(500, "An error occurred while creating the MenuType.");
-				}
+		}
 
 				Log.Information("MenuType created successfully.");
 				return StatusCode(201, "MenuType created successfully.");
@@ -427,7 +428,7 @@ namespace POSAndOrderSystem.Controllers
 				return BadRequest(ex.Message);
 			}
 			catch (Exception ex)
-			{
+		{
 				Log.Error($"Unexpected error: {ex.Message}");
 				return StatusCode(500, "An unexpected error occurred.");
 			}
@@ -450,7 +451,7 @@ namespace POSAndOrderSystem.Controllers
 				var isCreated = await _menuServices.CreateMenuItem(createMenuItemDto);
 
 				if (!isCreated)
-				{
+		{
 					Log.Error("Failed to create MenuItem due to database error.");
 					return StatusCode(500, "An error occurred while creating the MenuItem.");
 				}
@@ -485,8 +486,8 @@ namespace POSAndOrderSystem.Controllers
 				if (!isUpdated) return NotFound($"User with ID {updateUserDto.ID} not found.");
 
 				Log.Information("User updated successfully.");
-				return Ok("User updated successfully.");
-			}
+			return Ok("User updated successfully.");
+		}
 			catch (ArgumentException ex)
 			{
 				Log.Warning($"Validation error: {ex.Message}");
@@ -698,14 +699,14 @@ namespace POSAndOrderSystem.Controllers
 		{
 			Log.Information($"Delete LookupItem operation initiated for ID: {id}");
 			try
-			{
+		{
 				var isDeleted = await _lookupServices.DeleteLookupItemById(id);
 
 				if (!isDeleted)
 				{
 					Log.Error("Failed to delete LookupItem due to database error.");
 					return StatusCode(500, "An error occurred while deleting the LookupItem.");
-				}
+		}
 
 				Log.Information($"LookupItem deleted successfully for ID: {id}");
 				return Ok("LookupItem deleted successfully.");
@@ -735,14 +736,14 @@ namespace POSAndOrderSystem.Controllers
 		{
 			Log.Information($"Delete MenuType operation initiated for ID: {id}");
 			try
-			{
+		{
 				var isDeleted = await _menuServices.DeleteMenuType(id);
 
 				if (!isDeleted)
 				{
 					Log.Warning($"Failed to delete MenuType with ID: {id}.");
 					return NotFound("MenuType not found.");
-				}
+		}
 
 				Log.Information($"MenuType with ID: {id} deleted successfully.");
 				return Ok("MenuType deleted successfully.");
@@ -770,7 +771,7 @@ namespace POSAndOrderSystem.Controllers
 			{
 				var isDeleted = await _menuServices.DeleteMenuItem(id);
 				if (!isDeleted)
-				{
+		{
 					Log.Warning($"Failed to delete MenuItem with ID: {id}.");
 					return NotFound("MenuItem not found or could not be deleted.");
 				}
