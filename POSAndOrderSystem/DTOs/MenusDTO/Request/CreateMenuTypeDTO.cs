@@ -3,6 +3,6 @@
 	public class CreateMenuTypeDTO
 	{
 		public required string MenuTypeName { get; set; }
-		public string? Image { get; set; }
+		public required string Image { get; set; }
 	}
 }

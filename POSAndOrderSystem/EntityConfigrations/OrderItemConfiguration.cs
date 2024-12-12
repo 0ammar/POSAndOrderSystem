@@ -16,33 +16,31 @@ namespace POSAndOrderSystem.EntityConfigurations
 			// CreationDate
 			builder.Property(u => u.CreationDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
-			// IsDeleted
-			builder.Property(u => u.IsActive).IsRequired().HasDefaultValue(true);
+			// MenuItemID
+			builder.Property(o => o.OrderID).IsRequired();
 
 			// MenuItemID
-			builder.Property(o => o.MenuItemID)
-				.IsRequired();
+			builder.Property(o => o.MenuItemID).IsRequired();
 
-			// Quantity
-			builder.Property(o => o.Quantity)
-				.IsRequired()
-				.HasDefaultValue(1);
+			// OrderItemName
+			builder.Property(mi => mi.OrderItemName).IsRequired().HasMaxLength(100);
+			builder.HasIndex(x => x.ID).IsUnique();
+			builder.ToTable(x => x.HasCheckConstraint("CH-MenuItemName_Length", "LEN( MenuItemName ) >= 3"));
 
-			// OrderPrice
-			builder.Property(o => o.Price)
-			.IsRequired()
-			.HasDefaultValue(0);
+			// MenuItemPrice
+			builder.Property(o => o.OrderItemPrice).IsRequired().HasDefaultValue(0);
 			builder.ToTable(x => x.HasCheckConstraint("CH_Price_Positive", "[Price] >= 0"));
 
+			// Quantity
+			builder.Property(o => o.Quantity).IsRequired().HasDefaultValue(1);
+
 			// OrderNotes
-			builder.Property(o => o.OrderItemNotes)
-			.IsRequired(false)
-			.HasMaxLength(500);
+			builder.Property(o => o.OrderItemNotes).IsRequired(false).HasMaxLength(500);
 
-
+			// Relationships
 			builder.HasOne<MenuItem>().WithMany().HasForeignKey(oi => oi.MenuItemID);
-			builder.HasOne<MenuItem>().WithMany().HasForeignKey(oi => oi.MenuItemName);
-
+			builder.HasOne<MenuItem>().WithMany().HasForeignKey(oi => oi.OrderItemName);
+			builder.HasOne<MenuItem>().WithMany().HasForeignKey(oi => oi.OrderItemPrice);
 		}
 	}
 }

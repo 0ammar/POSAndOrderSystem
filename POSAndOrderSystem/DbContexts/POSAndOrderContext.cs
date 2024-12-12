@@ -31,21 +31,21 @@ namespace POSAndOrderSystem.DbContexts
 				);
 
 			modelBuilder.Entity<LookupItem>().HasData(
-				new LookupItem { LookupTypeId = 1, ID = 1, Name = "Admin", Description = "Admin" },
-				new LookupItem { LookupTypeId = 1, ID = 2, Name = "Cashier", Description = "Cashier" },
-				new LookupItem { LookupTypeId = 1, ID = 3, Name = "Customer", Description = "Customer" },
-				new LookupItem { LookupTypeId = 1, ID = 4, Name = "Delivery", Description = "Delivery" },
-				new LookupItem { LookupTypeId = 2, ID = 5, Name = "Pending", Description = "Pending" },
-				new LookupItem { LookupTypeId = 2, ID = 6, Name = "In Progress", Description = "In Progress" },
-				new LookupItem { LookupTypeId = 2, ID = 7, Name = "Completed", Description = "Completed" },
-				new LookupItem { LookupTypeId = 2, ID = 8, Name = "Canceld", Description = "Canceld" },
-				new LookupItem { LookupTypeId = 3, ID = 9, Name = "Cash", Description = "Cash" },
-				new LookupItem { LookupTypeId = 3, ID = 10, Name = "Credit Card", Description = "Credit Card" },
-				new LookupItem { LookupTypeId = 3, ID = 11, Name = "Online Wallet", Description = "Online Wallet" },
-				new LookupItem { LookupTypeId = 4, ID = 12, Name = "Paid", Description = "Paid" },
-				new LookupItem { LookupTypeId = 4, ID = 13, Name = "Unpaid", Description = "Unpaid" },
-				new LookupItem { LookupTypeId = 5, ID = 14, Name = "Pickup At Restaurant", Description = "Pickup At Restaurant" },
-				new LookupItem { LookupTypeId = 5, ID = 15, Name = "Deliver To Customer", Description = "Deliver To Customer" }
+				new LookupItem { LookupTypeId = 1, ID = 1, Name = "Admin" },
+				new LookupItem { LookupTypeId = 1, ID = 2, Name = "Cashier" },
+				new LookupItem { LookupTypeId = 1, ID = 3, Name = "Customer" },
+				new LookupItem { LookupTypeId = 1, ID = 4, Name = "Delivery" },
+				new LookupItem { LookupTypeId = 2, ID = 5, Name = "Pending" },
+				new LookupItem { LookupTypeId = 2, ID = 6, Name = "In Progress" },
+				new LookupItem { LookupTypeId = 2, ID = 7, Name = "Completed" },
+				new LookupItem { LookupTypeId = 2, ID = 8, Name = "Canceld" },
+				new LookupItem { LookupTypeId = 3, ID = 9, Name = "Cash" },
+				new LookupItem { LookupTypeId = 3, ID = 10, Name = "Credit Card" },
+				new LookupItem { LookupTypeId = 3, ID = 11, Name = "Online Wallet" },
+				new LookupItem { LookupTypeId = 4, ID = 12, Name = "Paid" },
+				new LookupItem { LookupTypeId = 4, ID = 13, Name = "Unpaid", },
+				new LookupItem { LookupTypeId = 5, ID = 14, Name = "Pickup" },
+				new LookupItem { LookupTypeId = 5, ID = 15, Name = "Delivery" }
 				);
 
 			modelBuilder.Entity<MenuType>().HasData(
@@ -94,13 +94,8 @@ namespace POSAndOrderSystem.DbContexts
 				new User
 				{
 					ID = 1,
-					FirstName = "New",
-					LastName = "User",
-					Email = "0ammararab0@gmail.com",
+					Name = "The Admin",
 					Password = "AAAzzz111!",
-					Phone = "0788482930",
-					Address = "Jordan",
-					UserImage = "qazwsxedcrfvtgbtgbyhnujm",
 					RoleId = 1,
 				});
 
@@ -109,8 +104,8 @@ namespace POSAndOrderSystem.DbContexts
 			modelBuilder.ApplyConfiguration(new LookupItemConfiguration());
 			modelBuilder.ApplyConfiguration(new MenuTypeConfiguration());
 			modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
+			modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
 			base.OnModelCreating(modelBuilder);
-			modelBuilder.ApplyConfiguration(new UserEntityConfigration());
 		}
 	}
 }

@@ -8,15 +8,15 @@ namespace POSAndOrderSystem.EntityConfigrations
 	{
 		public void Configure(EntityTypeBuilder<LookupItem> builder)
 		{
+			// ID
 			builder.ToTable("LookupItems");
-			//Set Primary Key 
 			builder.HasKey(x => x.ID);
+			builder.Property(x => x.ID).IsRequired();
 
-			// Creation date and is deleted defaults
-			builder.Property(x => x.IsActive).HasDefaultValue(true);
-			builder.Property(x => x.CreationDate).HasDefaultValueSql("getdate()");
+			// CreationDate
+			builder.Property(u => u.CreationDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
-			//Check 
+			// Check 
 			builder.ToTable(x => x.HasCheckConstraint("CH_Name_Length", "Len(Name) >= 3"));
 
 			//RelationShips

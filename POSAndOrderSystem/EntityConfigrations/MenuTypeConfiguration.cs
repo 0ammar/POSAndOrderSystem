@@ -8,19 +8,13 @@ namespace POSAndOrderSystem.EntityConfigrations
 	{
 		public void Configure(EntityTypeBuilder<MenuType> builder)
 		{
-			// User ID
+			// ID
 			builder.ToTable("MenuTypes");
 			builder.HasKey(x => x.ID);
+			builder.Property(x => x.ID).IsRequired();
 
 			// CreationDate
-			builder.Property(u => u.CreationDate)
-			.IsRequired()
-			.HasDefaultValueSql("GETDATE()");
-
-			// IsDeleted
-			builder.Property(u => u.IsActive)
-		   .IsRequired()
-		   .HasDefaultValue(true);
+			builder.Property(u => u.CreationDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
 			// MenuTypeName
 			builder.Property("MenuTypeName").IsRequired().HasMaxLength(30);

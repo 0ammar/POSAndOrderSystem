@@ -26,11 +26,11 @@ namespace POSAndOrderSystem.Controllers
 		[HttpPost("register")]
 		public async Task<IActionResult> Register([FromBody] RegisterDTO request)
 		{
-			Log.Information("Register operation started for email: {Email}", request.Email);
+			Log.Information("Register operation started for email: {Email}");
 			try
 			{
 				var result = await _authServices.RegisterAsync(request);
-				Log.Information("User registered successfully: {Name}", $"{request.FirstName} {request.LastName}");
+				Log.Information("User registered successfully: {Name}", $" {request.Name}");
 				return Ok(result);
 			}
 			catch (ArgumentException ex)
@@ -60,20 +60,20 @@ namespace POSAndOrderSystem.Controllers
 		/// <response code="401">If email or password is incorrect.</response>
 		/// <response code="500">If an unexpected error occurs.</response>
 		[HttpPost("login")]
-		public async Task<IActionResult> Auth([FromBody] LoginDTO input)
+		public async Task<IActionResult> Login([FromBody] LoginDTO input)
 		{
-			Log.Information("Login attempt started for email: {Email}", input.Email);
+			Log.Information("Login attempt started for email: {Email}", input.Name);
 			try
 			{
 				var response = await _authServices.Login(input);
 				if (response.Equals("Authentication failed"))
 				{
-					Log.Warning("Login failed for email: {Email}", input.Email);
+					Log.Warning("Login failed for email: {Email}", input.Name);
 					return Unauthorized("Email or password is not correct.");
 				}
 
-				Log.Information("User logged in successfully: {Email}", input.Email);
-				return Ok(response); // Assuming response contains the authentication token.
+				Log.Information("User logged in successfully: {Email}", input.Name);
+				return Ok(response);
 			}
 			catch (Exception ex)
 			{

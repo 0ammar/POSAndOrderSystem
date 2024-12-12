@@ -5,7 +5,6 @@ using POSAndOrderSystem.DbContexts;
 using POSAndOrderSystem.Implementations;
 using POSAndOrderSystem.Implemntations;
 using POSAndOrderSystem.Interfaces;
-using POSAndOrderSystem.Services;
 using Serilog;
 using System.Reflection;
 
@@ -38,20 +37,20 @@ builder.Services.AddSwaggerGen(c =>
 // Connect my database with backend
 builder.Services.AddDbContext<POSAndOrderContext>(con => con.UseSqlServer("Data Source=AMMAR-ARAB\\SQLEXPRESS;Initial Catalog=POSAndOrderSystem;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
 
-//Configure Serilog 
+// Configure Serilog 
 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 //string loggerPath = configuration.GetSection("LoggerPath").Value;
-Serilog.Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).
+Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).
 				WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "Logs/POSLogging.txt"), rollingInterval: RollingInterval.Day).
 				CreateLogger();
+
 // Dependency injections
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<ILookupServices, LookupServices>();
 builder.Services.AddScoped<IMenuServices, MenuServices>();
-builder.Services.AddScoped<IOrderServices, OrderService>();
+//builder.Services.AddScoped<IOrderServices, OrderService>();
 
-builder.Services.AddDbContext<POSAndOrderContext>(con => con.UseSqlServer("Data Source=AMMAR-ARAB\\SQLEXPRESS;Initial Catalog=POSAndOrderSystem;Integrated Security=True;Trust Server Certificate=True"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -84,7 +83,7 @@ try
 {
 	Log.Information("Start Running The API");
 	Log.Information("App Runs Successfully");
-app.Run();
+	app.Run();
 
 }
 catch (Exception ex)

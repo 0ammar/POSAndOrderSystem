@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using POSAndOrderSystem.Entities;
+using POSAndOrderSystem.Enums;
 
 namespace POSAndOrderSystem.EntityConfigurations
 {
@@ -11,58 +12,34 @@ namespace POSAndOrderSystem.EntityConfigurations
 			// ID
 			builder.ToTable("Orders");
 			builder.HasKey(x => x.ID);
-			builder.Property(x => x.ID).UseIdentityColumn().IsRequired();
+			builder.Property(x => x.ID).IsRequired();
 
 			// CreationDate
 			builder.Property(u => u.CreationDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
-			// IsDeleted
-			builder.Property(u => u.IsActive).IsRequired().HasDefaultValue(true);
-
-			// PaymentMethod
-			builder.Property(o => o.PaymentMethodID)
-				.HasDefaultValue(8)
-				.IsRequired();
-
-			// PaymentStatus
-			builder.Property(o => o.PaymentStatusID)
-				.HasDefaultValue(12)
-				.IsRequired();
-
-			// PickUpType
-			builder.Property(o => o.PickUpTypeID)
-				.HasDefaultValue(14)
-				.IsRequired();
-
-			// OrdereDate
-			builder.Property(o => o.OrderDate)
-				.IsRequired()
-				.HasDefaultValueSql("GETDATE()");
-
-			// PickupTime
-			builder.Property(o => o.PickupTime)
-				.IsRequired(false);
-
-			// EstimatedDeliveryTime
-			builder.Property(o => o.EstimatedDeliveryTime)
-				.IsRequired();
-
 			// TotalAmount
-			builder.
-				Property(o => o.TotalAmount)
-				.IsRequired()
-				.HasDefaultValue(0);
+			builder.Property(o => o.TotalAmount).IsRequired().HasDefaultValue(0);
 
 			// OrderNotes
-			builder.Property(o => o.OrderNotes)
-				.IsRequired(false)
-				.HasMaxLength(200)
-				.IsUnicode();
+			builder.Property(o => o.OrderNotes).IsRequired(false).HasMaxLength(200).IsUnicode(false);
 
 			// UserDetails 
-			builder.Property(o => o.UserFirstName).IsRequired().HasMaxLength(100);
-			builder.Property(o => o.UserLastName).IsRequired().HasMaxLength(100);
-			builder.Property(o => o.UserAddress).IsRequired().HasMaxLength(255);
+			builder.Property(o => o.UserName).IsRequired().HasMaxLength(100);
+
+			// UserID
+			builder.Property(x => x.UserID).IsRequired();
+
+			// OrderStatusID
+			builder.Property(x => x.OrderStatusID).IsRequired().HasDefaultValue((int)OrderStatus.Pending);
+
+			// PaymentMethod
+			builder.Property(o => o.PaymentMethodID).IsRequired().HasDefaultValue((int)PaymentMethod.Cash);
+
+			// PaymentStatus
+			builder.Property(o => o.PaymentStatusID).IsRequired().HasDefaultValue((int)PaymentStatus.Unpaid);
+
+			// PickUpType
+			builder.Property(o => o.PickUpTypeID).IsRequired().HasDefaultValue((int)PickUpType.Delivery);
 
 			//RelationShips
 			builder.HasMany<OrderItem>().WithOne().HasForeignKey(x => x.OrderID);

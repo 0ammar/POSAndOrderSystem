@@ -2,8 +2,7 @@
 {
 	public class LookupItem : MainEntity
 	{
-		public required string Name { get; set; }
-		public int LookupTypeId { get; set; }
-		public string? Description { get; set; }
+		public string Name { get; set; }
+		public required int LookupTypeId { get; set; }
 	}
 }

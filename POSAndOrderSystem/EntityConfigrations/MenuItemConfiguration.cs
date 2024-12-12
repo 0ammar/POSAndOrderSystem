@@ -8,32 +8,25 @@ namespace POSAndOrderSystem.EntityConfigrations
 	{
 		public void Configure(EntityTypeBuilder<MenuItem> builder)
 		{
-			// User ID
+			// ID
 			builder.ToTable("MenuItems");
 			builder.HasKey(x => x.ID);
+			builder.Property(x => x.ID).IsRequired();
 
 			// CreationDate
-			builder.Property(u => u.CreationDate)
-			.IsRequired()
-			.HasDefaultValueSql("GETDATE()");
-
-			// IsDeleted
-			builder.Property(u => u.IsActive)
-		   .IsRequired()
-		   .HasDefaultValue(true);
+			builder.Property(u => u.CreationDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
 			// MenuITemName
-			builder.Property(mi => mi.MenuItemName)
-		   .IsRequired()
-		   .HasMaxLength(100);
+			builder.Property(mi => mi.MenuItemName).IsRequired().HasMaxLength(100);
 			builder.HasIndex(x => x.ID).IsUnique();
 			builder.ToTable(x => x.HasCheckConstraint("CH-MenuItemName_Length", "LEN( MenuItemName ) >= 3"));
 
 			// MenuItemPrice
-			builder.Property(mi => mi.Price)
-				.IsRequired()
-				.HasDefaultValue(0);
+			builder.Property(mi => mi.Price).IsRequired().HasDefaultValue(0);
 			builder.ToTable(x => x.HasCheckConstraint("CH_Price_Positive", "[Price] >= 0"));
+
+			// MenuTypeID
+			builder.Property(x => x.MenuTypeID).IsRequired();
 		}
 	}
 }

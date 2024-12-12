@@ -33,21 +33,10 @@ namespace POSAndOrderSystem.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<int>("LookupTypeId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -67,151 +56,106 @@ namespace POSAndOrderSystem.Migrations
                         {
                             ID = 1,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Admin",
-                            IsActive = false,
                             LookupTypeId = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin"
                         },
                         new
                         {
                             ID = 2,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Cashier",
-                            IsActive = false,
                             LookupTypeId = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cashier"
                         },
                         new
                         {
                             ID = 3,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Customer",
-                            IsActive = false,
                             LookupTypeId = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Customer"
                         },
                         new
                         {
                             ID = 4,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Delivery",
-                            IsActive = false,
                             LookupTypeId = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Delivery"
                         },
                         new
                         {
                             ID = 5,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Pending",
-                            IsActive = false,
                             LookupTypeId = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pending"
                         },
                         new
                         {
                             ID = 6,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "In Progress",
-                            IsActive = false,
                             LookupTypeId = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "In Progress"
                         },
                         new
                         {
                             ID = 7,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Completed",
-                            IsActive = false,
                             LookupTypeId = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Completed"
                         },
                         new
                         {
                             ID = 8,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Canceld",
-                            IsActive = false,
                             LookupTypeId = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Canceld"
                         },
                         new
                         {
                             ID = 9,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Cash",
-                            IsActive = false,
                             LookupTypeId = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cash"
                         },
                         new
                         {
                             ID = 10,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Credit Card",
-                            IsActive = false,
                             LookupTypeId = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Credit Card"
                         },
                         new
                         {
                             ID = 11,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Online Wallet",
-                            IsActive = false,
                             LookupTypeId = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Online Wallet"
                         },
                         new
                         {
                             ID = 12,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Paid",
-                            IsActive = false,
                             LookupTypeId = 4,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Paid"
                         },
                         new
                         {
                             ID = 13,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Unpaid",
-                            IsActive = false,
                             LookupTypeId = 4,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Unpaid"
                         },
                         new
                         {
                             ID = 14,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Pickup At Restaurant",
-                            IsActive = false,
                             LookupTypeId = 5,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pickup At Restaurant"
+                            Name = "Pickup"
                         },
                         new
                         {
                             ID = 15,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Deliver To Customer",
-                            IsActive = false,
                             LookupTypeId = 5,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Deliver To Customer"
+                            Name = "Delivery"
                         });
                 });
 
@@ -226,15 +170,7 @@ namespace POSAndOrderSystem.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -253,40 +189,30 @@ namespace POSAndOrderSystem.Migrations
                         {
                             ID = 1,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "User Role"
                         },
                         new
                         {
                             ID = 2,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Order Status"
                         },
                         new
                         {
                             ID = 3,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Payment Method"
                         },
                         new
                         {
                             ID = 4,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Payment Status"
                         },
                         new
                         {
                             ID = 5,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pickup Type"
                         });
                 });
@@ -304,11 +230,6 @@ namespace POSAndOrderSystem.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.Property<string>("MenuItemName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -316,9 +237,6 @@ namespace POSAndOrderSystem.Migrations
 
                     b.Property<int>("MenuTypeID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<float>("Price")
                         .ValueGeneratedOnAdd()
@@ -344,270 +262,216 @@ namespace POSAndOrderSystem.Migrations
                         {
                             ID = 1,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Chicken Shawarma",
                             MenuTypeID = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 2,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Beef Shawarma Plate",
                             MenuTypeID = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 3,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Spicy Shawarma Wrap",
                             MenuTypeID = 1,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 4,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Half Roasted Chicken",
                             MenuTypeID = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 5,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "BBQ Glazed Roasted Chicken",
                             MenuTypeID = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 6,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Lemon Pepper Roasted Chicken",
                             MenuTypeID = 2,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 7,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Charcoal-Grilled Whole Chicken",
                             MenuTypeID = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 8,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Charcoal-Grilled Chicken Skewers",
                             MenuTypeID = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 9,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Spicy Peri-Peri Charcoal Chicken",
                             MenuTypeID = 3,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 10,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Chicken Thighs with Garlic Butter",
                             MenuTypeID = 4,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 11,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Boneless Chicken Breast Fillets",
                             MenuTypeID = 4,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 12,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Drumsticks in Spicy Marinade",
                             MenuTypeID = 4,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 13,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Herb Roasted Chicken with Basmati Rice",
                             MenuTypeID = 5,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 14,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Roasted Chicken with Pilaf and Saffron",
                             MenuTypeID = 5,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 15,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "BBQ Roasted Chicken over Brown Rice",
                             MenuTypeID = 5,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 16,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Charcoal Chicken with Turmeric Rice",
                             MenuTypeID = 6,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 17,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Grilled Chicken with Vegetable Rice",
                             MenuTypeID = 6,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 18,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Smoky Charcoal Chicken with Fried Rice",
                             MenuTypeID = 6,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 19,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "French Fries with Dipping Sauces",
                             MenuTypeID = 7,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 20,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Mozzarella Sticks with Marinara",
                             MenuTypeID = 7,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 21,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Chicken Nuggets with Honey Mustard",
                             MenuTypeID = 7,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 22,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Hummus with Pita Bread",
                             MenuTypeID = 8,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 23,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Stuffed Grape Leaves",
                             MenuTypeID = 8,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 24,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Garlic Bread with Cheese",
                             MenuTypeID = 8,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 25,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Fresh Lemon Mint Cooler",
                             MenuTypeID = 9,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 26,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Iced Hibiscus Tea",
                             MenuTypeID = 9,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         },
                         new
                         {
                             ID = 27,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
                             MenuItemName = "Sparkling Berry Lemonade",
                             MenuTypeID = 9,
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 3f
                         });
                 });
@@ -629,18 +493,10 @@ namespace POSAndOrderSystem.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.Property<string>("MenuTypeName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -654,73 +510,55 @@ namespace POSAndOrderSystem.Migrations
                         {
                             ID = 1,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Shawarma",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Shawarma"
                         },
                         new
                         {
                             ID = 2,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Roasted Chicken",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Roasted Chicken"
                         },
                         new
                         {
                             ID = 3,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Chicken On Charcoal",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Chicken On Charcoal"
                         },
                         new
                         {
                             ID = 4,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Prorated Chicken",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Prorated Chicken"
                         },
                         new
                         {
                             ID = 5,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Roasted Chicken With Rice",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Roasted Chicken With Rice"
                         },
                         new
                         {
                             ID = 6,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Chicken On Charcoal With Rice",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Chicken On Charcoal With Rice"
                         },
                         new
                         {
                             ID = 7,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Snacks",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Snacks"
                         },
                         new
                         {
                             ID = 8,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Appetizers",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Appetizers"
                         },
                         new
                         {
                             ID = 9,
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = false,
-                            MenuTypeName = "Drinks",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            MenuTypeName = "Drinks"
                         });
                 });
 
@@ -732,25 +570,11 @@ namespace POSAndOrderSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<DateTime>("CancellationAllowedUntil")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EstimatedDeliveryTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("OrderNotes")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderStatusID")
@@ -765,24 +589,13 @@ namespace POSAndOrderSystem.Migrations
                     b.Property<int>("PickUpTypeID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("PickupTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<float>("TotalAmount")
                         .HasColumnType("real");
-
-                    b.Property<string>("UserAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserFirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserLastName")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -810,26 +623,21 @@ namespace POSAndOrderSystem.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<int>("MenuItemID")
                         .HasColumnType("int");
-
-                    b.Property<string>("MenuItemName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<string>("OrderItemNotes")
+                    b.Property<string>("OrderItemName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
+                    b.Property<string>("OrderItemNotes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("OrderItemPrice")
                         .HasColumnType("real");
 
                     b.Property<float>("Quantity")
@@ -850,66 +658,29 @@ namespace POSAndOrderSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Address")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserImage")
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("Email")
+                    b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("Phone")
-                        .IsUnique()
-                        .HasFilter("[Phone] IS NOT NULL");
 
                     b.HasIndex("RoleId");
 
@@ -919,17 +690,10 @@ namespace POSAndOrderSystem.Migrations
                         new
                         {
                             ID = 1,
-                            Address = "Jordan",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "0ammararab0@gmail.com",
-                            FirstName = "New",
-                            IsActive = false,
-                            LastName = "User",
-                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "The Admin",
                             Password = "AAAzzz111!",
-                            Phone = "0788482930",
-                            RoleId = 1,
-                            UserImage = "qazwsxedcrfvtgbtgbyhnujm"
+                            RoleId = 1
                         });
                 });
 

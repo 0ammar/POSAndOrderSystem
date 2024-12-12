@@ -2,7 +2,7 @@
 {
 	public class MenuType : MainEntity
 	{
-		public required string MenuTypeName { get; set; }
-		public string? Image { get; set; }
+		public string MenuTypeName { get; set; }
+		public string Image { get; set; }
 	}
 }
