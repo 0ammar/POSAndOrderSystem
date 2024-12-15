@@ -50,4 +50,4 @@ This project follows modern software development practices, including **SOLID pr
 
 1. Clone the repository:  
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/0ammar/POSAndOrderSystem.git
